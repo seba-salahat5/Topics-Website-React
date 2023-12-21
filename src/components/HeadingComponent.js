@@ -46,7 +46,7 @@ margin: 0;
 font-weight: 400;
 `;
 
-const StyledHeading1 = styled.h1`
+const StyledHeading1 = styled.h2`
 padding: 0;
 margin: 0;
 color: #03C180;
