@@ -12,6 +12,10 @@ font-weight: 600;
 text-align: center;
 color: #333333;
 background-color: #FFFFFF;
+
+@media screen and (max-width: 490px) {
+    font-size: 0px;
+}
 `;
 
 const StyledIcon = styled(IonIcon)`
