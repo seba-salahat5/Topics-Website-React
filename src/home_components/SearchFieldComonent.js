@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { IonIcon } from '@ionic/react';
 import { searchOutline } from 'ionicons/icons';
 
-
 const SearchBar = styled.span`
 width: 90%;
 display: flex;
@@ -11,8 +10,7 @@ justify-content: space-around;
 align-items: baseline;
 padding: 5px 10px 5px 10px;
 margin-right: 2px;
-color: #333333;
-background-color: #FFFFFF;
+background-color: var(--bg_default);
 
 @media screen and (max-width: 547px) {
     width: 100%;
@@ -36,8 +34,8 @@ outline: none;
 export default function SearchFieldComonent() {
     return (
         <SearchBar>
-            <StyledIcon icon={searchOutline}/>
-            <StyledInput type="text" id="SearchInput" placeholder="Search the website..."/>
+            <StyledIcon icon={searchOutline} />
+            <StyledInput type="text" id="SearchInput" placeholder="Search the website..." />
         </SearchBar>
     );
 }

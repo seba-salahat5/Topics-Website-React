@@ -7,15 +7,14 @@ display: flex;
 justify-content: center;
 position: relative;
 padding-bottom: 15px;
-color: #333333;
-background-color: #FFFFFF;
+background-color: var(--bg_default);
 `;
 
 const LeftTriengle = styled.div`
 border-style: solid;
 z-index: 1;
 border-width: 0px 0 70px 90vw;
-border-color: transparent transparent transparent #0768AC;
+border-color: transparent transparent transparent var(--brand-primary);
 position: absolute;
 left: 0;
 `;
@@ -24,7 +23,7 @@ const RightTriengle = styled.div`
 border-style: solid;
 z-index: 1;
 border-width: 0 90vw 70px 0;
-border-color: transparent #03C180 transparent transparent;
+border-color: transparent var(--brand-secondary) transparent transparent;
 position: absolute;
 right: 0;
 `;
@@ -47,9 +46,7 @@ font-weight: 400;
 `;
 
 const StyledHeading1 = styled.h2`
-padding: 0;
-margin: 0;
-color: #03C180;
+color: var(--brand-secondary);
 font-weight: 600;
 font-size: 20px;
 margin-top: 8px;

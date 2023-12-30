@@ -1,11 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { moonOutline, heartOutline } from 'ionicons/icons';
-import HeaderButton from './HeaderButton.js';
+import IconButton from '../shared_components/IconButton.js';
 
 const Header = styled.header`
-color: #333333;
-background-color: #FFFFFF;
+background-color: var(--bg_default);
 padding: 5px 60px 5px 60px;
 display: flex;
 justify-content: space-between;
@@ -18,7 +17,7 @@ z-index: 3;
 const HeaderTitle = styled.h1`
 display: flex;
 font-size: 17px;
-color: #0768AC;
+color: var(--brand-primary);
 `;
 
 const ButtonSpan = styled.span`
@@ -29,8 +28,8 @@ export default function HeaderComponent() {
         <Header>
             <HeaderTitle>Web Topics</HeaderTitle>
             <ButtonSpan>
-                <HeaderButton buttonText={"Dark Mode"} buttonIcon={moonOutline} onClickEvent={() => { console.log("dark mode") }} />
-                <HeaderButton buttonText={"Favourites"} buttonIcon={heartOutline} onClickEvent={() => { console.log("favourites") }} />
+                <IconButton buttonText={"Dark Mode"} buttonIcon={moonOutline} onClickEvent={() => { console.log("dark mode") }} />
+                <IconButton buttonText={"Favourites"} buttonIcon={heartOutline} onClickEvent={() => { console.log("favourites") }} />
             </ButtonSpan>
         </Header>
 

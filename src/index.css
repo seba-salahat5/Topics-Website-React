@@ -1,3 +1,18 @@
+:root {
+  --brand-primary: #0768AC;
+  --brand-secondary: #03C180;
+  --bg_default: #FFFFFF;
+  --dark_bg_default: #1A1A1A;
+  --bg_body: #F0F9FF;
+  --dark_bg_body: #282828;
+  --lines-color: #DDDDDD;
+  --dark_lines-color: #000000;
+  --body-text: #333333;
+  --dark_body-text: #EDEDED;
+  --heart-color: #DC143C;
+  --star-color: #DAA520;
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Nunito Sans', sans-serif;
@@ -6,6 +21,11 @@
 body {
   margin: 0px;
   padding: 0px;
-  background-color: #F0F9FF;
+  color: var(--body-text);
+  background-color: var(--bg_body);
 }
 
+h1,h2,h3,h4,h5,h6 {
+  margin: 0px;
+  font-size: 15px;
+}

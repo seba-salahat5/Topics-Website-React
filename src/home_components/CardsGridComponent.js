@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import CardComponent from './CardComponent.js';
 
 const CardsGrid = styled.div`
 width: 100%;
@@ -29,23 +28,8 @@ grid-template-columns: 18% 18% 18% 18% 18%;
 }
 `;
 
-const Column = styled.div`
-width: 100%;
-margin-block: 15px;
-`;
-
-
-export default function CardsGridComponent({ topics }) { 
+export default function CardsGridComponent({children}) { 
     return (
-        <React.Fragment>
-            <h3><strong>"{topics.length}" Web Topics Found</strong></h3>
-            <CardsGrid>
-                {topics.map((topic) => (
-                    <Column key={topic.id}>
-                        <CardComponent topic={topic} />
-                    </Column>
-                ))}
-            </CardsGrid>
-        </React.Fragment>
+        <CardsGrid>{children}</CardsGrid>
     );
 }

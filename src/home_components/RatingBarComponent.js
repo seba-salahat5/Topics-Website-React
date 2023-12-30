@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StarContainer = styled.div`
   display: inline-block;
   font-size: 24px;
-  color: #daa520;
+  color: var(--star-color);
   margin: 0;
 `;
 
