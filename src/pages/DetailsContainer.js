@@ -5,6 +5,7 @@ import HeaderComponent from '../layouts/HeaderComponent.js';
 import HeadingComponent from '../shared_components/HeadingComponent.js';
 import RatingBarComponent from '../shared_components/RatingBarComponent.js';
 import DetailsCardComponent from '../details_components/DetailsCardComponent.js';
+import ListComponent from '../details_components/ListComponent.js';
 import FooterComponent from '../layouts/FooterComponent.js';
 
 const DarkBanner = styled.section`
@@ -64,6 +65,7 @@ export default function DetailsContainer() {
                         <DetailsCardComponent image={details.image} topic={details.topic} name={details.name} />
                     </DetailsDiv>
                 </DarkBanner>
+                <ListComponent topic={details.topic} subTopics={details.subtopics} />
             </main>
             <FooterComponent />
         </React.Fragment>

@@ -81,7 +81,7 @@ export default function DetailsCardComponent({ image, topic, name }) {
                     <CardText><strong>{topic}</strong> by: <a href="#">{name}</a></CardText>
                     <InnerBox>
                         <InnerText>Interested about this topic?</InnerText>
-                        <Button buttonText={"Remove From Favourites"} buttonIcon={heartOutline} onClickEvent={() => { console.log("Added To Fav") }} />
+                        <Button buttonText={"Add To Favourites"} buttonIcon={heartOutline} onClickEvent={() => { console.log("Added To Fav") }} />
                         <CardFooter>Unlimited Credits</CardFooter>
                     </InnerBox>
                 </CardBox>
