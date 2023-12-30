@@ -11,6 +11,10 @@
   --dark_body-text: #EDEDED;
   --heart-color: #DC143C;
   --star-color: #DAA520;
+  --card-bg: #FFFFFF;
+  --card-border: #DDDDDD;
+  --card-text: #333333;
+  --dark-container-bg: #333333;
 }
 
 * {

@@ -1,19 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import RatingBarComponent from '../home_components/RatingBarComponent.js';
+import RatingBarComponent from '../shared_components/RatingBarComponent';
+import ImageComponent from './ImageComponent.js';
 
 const Card = styled.div`
 border-radius: 10px;
 object-fit: cover;
 overflow: hidden;
 box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-background-color: var(--bg_default);
-`;
-
-const StyledImage = styled.img`
-height: 130px;
-width: 100%;
-object-fit: cover;
 background-color: var(--bg_default);
 `;
 
@@ -56,18 +50,18 @@ overflow: hidden;
 text-overflow: ellipsis;
 `;
 
-export default function CardComponent({ topic }) {
-    const imageSrc = `/assets/${topic.image}`;
+export default function CardComponent({ image, topic, category, rating, name }) {
+    const imageSrc = `/assets/${image}`;
     return (
         <Card>
-            <StyledImage src={imageSrc} alt={topic.topic} />
+            <ImageComponent imageSrc={imageSrc}  alt={topic}/>
             <CardBody>
-                <CardSubTitle>{topic.category}</CardSubTitle>
-                <CardTitle>{topic.topic}</CardTitle>
+                <CardSubTitle>{category}</CardSubTitle>
+                <CardTitle>{topic}</CardTitle>
                 <CardRatingDiv>
-                    <RatingBarComponent rating={topic.rating} />
+                    <RatingBarComponent rating={rating} />
                 </CardRatingDiv>
-                <LightText>Author: {topic.name}</LightText>
+                <LightText>Author: {name}</LightText>
             </CardBody>
         </Card>
     );

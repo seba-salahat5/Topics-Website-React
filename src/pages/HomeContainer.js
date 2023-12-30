@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import HeaderComponent from '../layouts/HeaderComponent.js';
-import HeadingComponent from '../home_components/HeadingComponent.js';
+import HeadingComponent from '../shared_components/HeadingComponent.js';
 import SearchFieldComonent from '../home_components/SearchFieldComonent.js';
 import SelectComponent from '../home_components/SelectComponent.js';
 import CardComponent from '../shared_components/CardComponent.js';
@@ -43,6 +43,11 @@ const Column = styled.div`
 width: 100%;
 margin-block: 15px;
 `;
+
+const StyledLink = styled(Link)`
+text-decoration: none;
+color: inherit;
+`;
 export default function HomeContainer() {
     const sortOptions = ['Default', 'Topic Title', 'Author Name'];
     const FilterOptions = ['Default', 'Web Development Languages', 'Frontend Frameworks and Libraries', 'Backend Frameworks and Libraries', 'Databases and APIs', 'Web Development Concepts and Technologies'];
@@ -65,11 +70,11 @@ export default function HomeContainer() {
                 </div>
                 <CardsGridComponent>
                     {TopicsArray.map((topic) => (
-                        <Link to={`/details/${topic.id}?topicId=${topic.id}`} key={topic.id}>
+                        <StyledLink to={`/details/${topic.id}?topicId=${topic.id}`} key={topic.id}>
                             <Column key={topic.id}>
-                                <CardComponent topic={topic} />
+                                <CardComponent image={topic.image} topic={topic.topic} category={topic.category} rating={topic.rating} name={topic.name}/>
                             </Column>
-                        </Link>
+                        </StyledLink>
                     ))}
                 </CardsGridComponent>
             </StyledMain>
