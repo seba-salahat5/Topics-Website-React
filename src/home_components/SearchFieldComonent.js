@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from "react";
 import styled from 'styled-components';
 import { IonIcon } from '@ionic/react';
 import { searchOutline } from 'ionicons/icons';
@@ -21,6 +21,7 @@ const StyledIcon = styled(IonIcon)`
 vertical-align: middle;
 padding-top: 14px;
 padding-right: 5px;
+color: var(--body-text);
 `;
 
 const StyledInput = styled.input`
@@ -28,7 +29,9 @@ width: 100%;
 height: 100%;
 border: 0px;
 font-size: 17px;
+background-color: var(--bg_default);
 outline: none;
+color: var(----body-text);
 `;
 
 export default function SearchFieldComonent() {

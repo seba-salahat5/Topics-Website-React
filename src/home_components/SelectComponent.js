@@ -1,6 +1,5 @@
-import * as React from 'react';
+import React from "react";
 import styled from 'styled-components';
-
 
 const Dropdown = styled.div`
 padding: 5px 10px 5px 10px;
@@ -10,6 +9,7 @@ border: 0px;
 font-size: 13px;
 font-weight: bolder;
 background-color: var(--bg_default);
+color: var(--body-text);
 `;
 
 const Select = styled.select`
@@ -17,6 +17,7 @@ width: 100%;
 border: 0px;
 font-size: 17px;
 background-color: var(--bg_default);
+color: var(--body-text);
 `;
 
 export default function SelectComponent({ type, options }) {

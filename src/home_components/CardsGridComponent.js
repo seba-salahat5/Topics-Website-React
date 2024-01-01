@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, {useContext} from "react";
+import {DarkModeContext} from "../App";
 import styled from 'styled-components';
 
 const CardsGrid = styled.div`
@@ -29,7 +30,8 @@ grid-template-columns: 18% 18% 18% 18% 18%;
 `;
 
 export default function CardsGridComponent({children}) { 
+    const { darkMode  } = useContext(DarkModeContext);
     return (
-        <CardsGrid>{children}</CardsGrid>
+        <CardsGrid className={darkMode?'dark-mode':'light-mode'}>{children}</CardsGrid>
     );
 }

@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, {useContext} from "react";
+import {DarkModeContext} from "../App";
 import styled from 'styled-components';
 
 
@@ -52,8 +53,9 @@ font-size: 20px;
 margin-top: 8px;
 `;
 export default function HeadingComponent() {
+    const { darkMode  } = useContext(DarkModeContext);
     return (
-        <Heading>
+        <Heading className={darkMode?'dark-mode':'light-mode'}>
             <RightTriengle/>
             <LeftTriengle/>
             <HeadingText>

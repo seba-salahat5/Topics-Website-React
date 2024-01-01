@@ -17,6 +17,23 @@
   --dark-container-bg: #333333;
 }
 
+.light-mode {
+  --bg_default: #FFFFFF;
+  --bg_body: #F0F9FF;
+  --lines-color: #DDDDDD;
+  --body-text: #333333;
+  --card-bg: #FFFFFF;
+  --card-border: #DDDDDD;
+  --card-text: #333333;
+  --dark-container-bg: #333333;
+}
+.dark-mode {
+  --bg_default: var(--dark_bg_default);
+  --bg_body: var(--dark_bg_body);
+  --lines-color: var(--dark_lines-color);
+  --body-text: var(--dark_body-text);
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Nunito Sans', sans-serif;

@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, {useContext} from "react";
+import {DarkModeContext} from "../App";
 import styled from 'styled-components';
 import { IonIcon } from '@ionic/react';
 import { checkmarkCircleOutline } from 'ionicons/icons';
@@ -46,8 +47,9 @@ padding-right: 5px;
 `;
 
 export default function ListComponent({ topic, subTopics }) {
+    const { darkMode  } = useContext(DarkModeContext);
     return (
-        <DetailsDiv>
+        <DetailsDiv className={darkMode?'dark-mode':'light-mode'}>
             <DetailsTitlePanel>
                 <h2>{topic} Sub Topics</h2>
             </DetailsTitlePanel>
