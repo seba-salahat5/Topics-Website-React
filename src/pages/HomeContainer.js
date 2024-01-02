@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
+
+// View Imports
 import { DarkModeContext } from "../App";
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import HeaderComponent from '../layouts/HeaderComponent.js';
 import HeadingComponent from '../shared_components/HeadingComponent.js';
@@ -10,8 +11,12 @@ import CardComponent from '../shared_components/CardComponent.js';
 import CardsGridComponent from '../home_components/CardsGridComponent.js';
 import LoadingSpinner from '../shared_components/LoadingSpinner.js';
 import FooterComponent from '../layouts/FooterComponent.js';
+
+// Functions Imports
+import { Link } from 'react-router-dom';
 import { API_URL } from '../constants.js';
 import { useApi } from '../customized_hooks/API_Hooks.js';
+import {extractCategories} from '../javaScript_functions/topics_functions.js';
 
 const StyledMain = styled.main`
 margin-top: 15px;
@@ -56,12 +61,15 @@ export default function HomeContainer() {
     const [topicsArray, setTopicsArray] = useState(null);
     const { darkMode } = useContext(DarkModeContext);
     const [inputValue, setInputValue] = useState('');
+    const [filterOptions, setFilterOptions] = useState([]);
     const sortOptions = ['Default', 'Topic Title', 'Author Name'];
-    const FilterOptions = ['Default', 'Web Development Languages', 'Frontend Frameworks and Libraries', 'Backend Frameworks and Libraries', 'Databases and APIs', 'Web Development Concepts and Technologies'];
     const { data, loading, error } = useApi(`${API_URL}/list`, inputValue);
 
     useEffect(() => {
         setTopicsArray(data);
+        extractCategories(data, (categories) => {
+            setFilterOptions(categories);
+        });
     }, [data]);
 
 
@@ -79,7 +87,7 @@ export default function HomeContainer() {
                     } />
                     <SelectContainer className={darkMode ? 'dark-mode' : 'light-mode'}>
                         <SelectComponent type={'Sort'} options={sortOptions} />
-                        <SelectComponent type={'Filter'} options={FilterOptions} />
+                        <SelectComponent type={'Filter'} options={filterOptions} />
                     </SelectContainer>
                 </MainLine>
                 {loading ? (

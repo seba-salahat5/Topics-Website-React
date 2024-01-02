@@ -1,9 +1,9 @@
 
 export let onSortChange = function (topics, selectedSort) {
     let sortedTopics = topics;
-    if (selectedSort == "Default") return sortedTopics;
+    if (selectedSort === "Default") return sortedTopics;
     else {
-      selectedSort == "Topic Title"
+      selectedSort === "Topic Title"
         ? sortedTopics = topics.slice().sort((a, b) => {
           const titleA = a.topic.toLowerCase();
           const titleB = b.topic.toLowerCase();
@@ -34,7 +34,7 @@ export let onSortChange = function (topics, selectedSort) {
   
   
   export let onFilterChange = function (topics, selectedFilter) {
-    let filteredTopics = topics.filter(topic => topic.category == selectedFilter || selectedFilter == "Default");
+    let filteredTopics = topics.filter(topic => topic.category === selectedFilter || selectedFilter === "Default");
     return filteredTopics;
   }
   
@@ -43,7 +43,7 @@ export let onSortChange = function (topics, selectedSort) {
   
     if (topics != null) {
       // here I used the set to ensure that each category stored once and then returned it back to an array
-      categories = [...new Set(topics.map(topic => topic.category))];
+      categories = ["Default",...new Set(topics.map(topic => topic.category))];
     }
     cb(categories);
   }
