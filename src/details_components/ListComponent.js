@@ -15,12 +15,15 @@ border-radius: 3px;
 }
 `;
 
+const StyledH2 = styled.h2`
+font-size: 20px;
+font-weight: 600;
+`;
+
 const DetailsTitlePanel = styled.div`
 width: 100%;
-border: none;
 list-style: none;
 border-radius: 7px 7px 0px 0px;
-height: max-content;
 padding: 15px 30px;
 border: solid 1px var(--lines-color);
 border-bottom: none;
@@ -28,22 +31,30 @@ background-color: var(--bg_default);
 `;
 
 const SubTopicPanel = styled.div`
-height: max-content;
 padding: 15px 30px;
+width: 100%;
 border: solid 1px var(--lines-color);
 border-bottom: none;
 background-color: var(--bg_default);
-
 &:last-child {
     border-bottom: solid 1px var(--lines-color);
     border-radius: 0px 7px 0px 7px;
 }
 `;
 
+const StyledH3 = styled.h3`
+white-space: nowrap;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+`;
+
 const StyledIcon = styled(IonIcon)`
 color: var(--brand-secondary);
 font-size: 20px;
 padding-right: 5px;
+vertical-align: middle;
 `;
 
 export default function ListComponent({ topic, subTopics }) {
@@ -51,11 +62,11 @@ export default function ListComponent({ topic, subTopics }) {
     return (
         <DetailsDiv className={darkMode?'dark-mode':'light-mode'}>
             <DetailsTitlePanel>
-                <h2>{topic} Sub Topics</h2>
+                <StyledH2>{topic} Sub Topics</StyledH2>
             </DetailsTitlePanel>
             {subTopics.map((subTopic, index) => (
                 <SubTopicPanel key = {index}>
-                    <h3><StyledIcon icon={checkmarkCircleOutline}></StyledIcon>{subTopic}</h3>
+                    <StyledH3><StyledIcon icon={checkmarkCircleOutline}></StyledIcon>{subTopic}</StyledH3>
                 </SubTopicPanel>
             ))}
         </DetailsDiv>

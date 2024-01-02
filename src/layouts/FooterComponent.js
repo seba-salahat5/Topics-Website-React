@@ -19,6 +19,9 @@ align-items: center;
 justify-content: center;
 position: relative;
 padding-bottom: 15px;
+position: fixed;
+background-color = var(--bg_body);
+bottom: 0;
 `;
 
 export default function FooterComponent() {
