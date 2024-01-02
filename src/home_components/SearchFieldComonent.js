@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { IonIcon } from '@ionic/react';
 import { searchOutline } from 'ionicons/icons';
+import { DEBOUNCE_VALUE } from '../constants.js';
 
 const SearchBar = styled.span`
 width: 90%;
@@ -34,11 +35,21 @@ outline: none;
 color: var(----body-text);
 `;
 
-export default function SearchFieldComonent() {
+let debounceDelay;
+export default function SearchFieldComonent({placeholder, onInput}) {
+    const [inputValue, setInputValue] = useState('');
+
+    const handleChange = (event)=>{
+        setInputValue(event.target.value);
+        clearTimeout(debounceDelay);
+        debounceDelay = setTimeout(async () => {
+            onInput(event.target.value);
+        }, DEBOUNCE_VALUE);
+    }
     return (
         <SearchBar>
             <StyledIcon icon={searchOutline} />
-            <StyledInput type="text" id="SearchInput" placeholder="Search the website..." />
+            <StyledInput type="text" id="SearchInput" value={inputValue} placeholder={placeholder} onInput={handleChange}/>
         </SearchBar>
     );
 }

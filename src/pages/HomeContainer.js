@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import {DarkModeContext} from "../App";
+import { DarkModeContext } from "../App";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import HeaderComponent from '../layouts/HeaderComponent.js';
@@ -10,7 +10,7 @@ import CardComponent from '../shared_components/CardComponent.js';
 import CardsGridComponent from '../home_components/CardsGridComponent.js';
 import LoadingSpinner from '../shared_components/LoadingSpinner.js';
 import FooterComponent from '../layouts/FooterComponent.js';
-import {API_URL} from '../constants.js';
+import { API_URL } from '../constants.js';
 import { useApi } from '../customized_hooks/API_Hooks.js';
 
 const StyledMain = styled.main`
@@ -54,23 +54,30 @@ color: inherit;
 `;
 export default function HomeContainer() {
     const [topicsArray, setTopicsArray] = useState(null);
-    const { darkMode  } = useContext(DarkModeContext);
+    const { darkMode } = useContext(DarkModeContext);
+    const [inputValue, setInputValue] = useState('');
     const sortOptions = ['Default', 'Topic Title', 'Author Name'];
     const FilterOptions = ['Default', 'Web Development Languages', 'Frontend Frameworks and Libraries', 'Backend Frameworks and Libraries', 'Databases and APIs', 'Web Development Concepts and Technologies'];
-    const { data, loading, error } = useApi(`${API_URL}/list`);
+    const { data, loading, error } = useApi(`${API_URL}/list`, inputValue);
 
     useEffect(() => {
         setTopicsArray(data);
     }, [data]);
 
+
+
     return (
         <React.Fragment>
-            <HeaderComponent/>
-            <HeadingComponent/>
+            <HeaderComponent />
+            <HeadingComponent />
             <StyledMain>
-                <MainLine className={darkMode?'dark-mode':'light-mode'}>
-                    <SearchFieldComonent />
-                    <SelectContainer className={darkMode?'dark-mode':'light-mode'}>
+                <MainLine className={darkMode ? 'dark-mode' : 'light-mode'}>
+                    <SearchFieldComonent inputValue={inputValue} placeholder="Search the website..." onInput={
+                        (inputValue) => {
+                            setInputValue(inputValue);
+                        }
+                    } />
+                    <SelectContainer className={darkMode ? 'dark-mode' : 'light-mode'}>
                         <SelectComponent type={'Sort'} options={sortOptions} />
                         <SelectComponent type={'Filter'} options={FilterOptions} />
                     </SelectContainer>
