@@ -16,7 +16,7 @@ import FooterComponent from '../layouts/FooterComponent.js';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../constants.js';
 import { useApi } from '../customized_hooks/API_Hooks.js';
-import {extractCategories} from '../javaScript_functions/topics_functions.js';
+import {extractCategories, onFilterChange, onSortChange} from '../javaScript_functions/topics_functions.js';
 
 const StyledMain = styled.main`
 margin-top: 15px;
@@ -58,21 +58,28 @@ text-decoration: none;
 color: inherit;
 `;
 export default function HomeContainer() {
-    const [topicsArray, setTopicsArray] = useState(null);
     const { darkMode } = useContext(DarkModeContext);
+
+    const [topicsArray, setTopicsArray] = useState(null);
     const [inputValue, setInputValue] = useState('');
     const [filterOptions, setFilterOptions] = useState([]);
     const sortOptions = ['Default', 'Topic Title', 'Author Name'];
+    const [selectedFilter, setSelectedFilter] = useState("Default");
+    const [selectedSort, setSelectedSort] = useState("Default");
+
     const { data, loading, error } = useApi(`${API_URL}/list`, inputValue);
 
     useEffect(() => {
-        setTopicsArray(data);
-        extractCategories(data, (categories) => {
-            setFilterOptions(categories);
-        });
-    }, [data]);
-
-
+        if(data){
+            extractCategories(data, (categories) => {
+                setFilterOptions(categories);
+            });
+    
+            let filteredTopics = onFilterChange(data, selectedFilter);
+            let sortedTopics = onSortChange(filteredTopics, selectedSort);
+            setTopicsArray(sortedTopics);
+        }
+    }, [data, selectedFilter, selectedSort]);
 
     return (
         <React.Fragment>
@@ -86,8 +93,8 @@ export default function HomeContainer() {
                         }
                     } />
                     <SelectContainer className={darkMode ? 'dark-mode' : 'light-mode'}>
-                        <SelectComponent type={'Sort'} options={sortOptions} />
-                        <SelectComponent type={'Filter'} options={filterOptions} />
+                        <SelectComponent type={'Sort'} options={sortOptions} onSelect={(selectedValue)=> {setSelectedSort(selectedValue)}} />
+                        <SelectComponent type={'Filter'} options={filterOptions} onSelect={(selectedValue)=> {setSelectedFilter(selectedValue)}}/>
                     </SelectContainer>
                 </MainLine>
                 {loading ? (
@@ -103,10 +110,10 @@ export default function HomeContainer() {
                                 {topicsArray !== null ? (
                                     <>
                                         <div>
-                                            <h3><strong>"{data.length}" Web Topics Found</strong></h3>
+                                            <h3><strong>"{topicsArray.length}" Web Topics Found</strong></h3>
                                         </div>
                                         <CardsGridComponent>
-                                            {data.map((topic) => (
+                                            {topicsArray.map((topic) => (
                                                 <StyledLink to={`/details/${topic.id}?topicId=${topic.id}`} key={topic.id}>
                                                     <Column key={topic.id}>
                                                         <CardComponent image={topic.image} topic={topic.topic} category={topic.category} rating={topic.rating} name={topic.name} />
@@ -125,11 +132,6 @@ export default function HomeContainer() {
                         )}
                     </>
                 )}
-
-
-
-
-
             </StyledMain>
             <FooterComponent />
         </React.Fragment>

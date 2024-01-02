@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 
 export function useApi(baseUrl, inputTerm) {
-  console.log(inputTerm);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -20,7 +19,6 @@ export function useApi(baseUrl, inputTerm) {
       setLoading(true);
       try {
         const response = await axios.get(url);
-        console.log(response.data);
         setData(response.data);
       } catch (error) {
         setError(error);

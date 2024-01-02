@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Dropdown = styled.div`
@@ -20,12 +20,18 @@ background-color: var(--bg_default);
 color: var(--body-text);
 `;
 
-export default function SelectComponent({ type, options }) {
+export default function SelectComponent({ type, options, onSelect }) {
+    const [selectedValue, setSelectedValue] = useState("Default");
     const id = `${type}Options`;
+
+    const handleSelection = (event) => {
+        setSelectedValue(event.target.value);
+        onSelect(event.target.value);
+    };
     return (
         <Dropdown>
             <label htmlFor={id}>{type} By:</label>
-            <Select id={id}>
+            <Select id={id} onChange={handleSelection} value={selectedValue}>
                 {options.map((option) => (
                     <option key={options.indexOf(option)} value={option}>
                         {option}
