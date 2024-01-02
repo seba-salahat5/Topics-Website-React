@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const CardsGrid = styled.div`
 width: 100%;
+padding-bottom: 20px;
 display: grid;
 justify-content: space-between;
 grid-template-columns: 18% 18% 18% 18% 18%;

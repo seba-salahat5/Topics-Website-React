@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 //View Imports
 import styled from 'styled-components';
 import LoadingSpinner from '../shared_components/LoadingSpinner.js';
-import HeaderComponent from '../layouts/HeaderComponent.js';
-import HeadingComponent from '../shared_components/HeadingComponent.js';
+//import HeaderComponent from '../layouts/HeaderComponent.js';
+//import HeadingComponent from '../shared_components/HeadingComponent.js';
 import RatingBarComponent from '../shared_components/RatingBarComponent.js';
 import DetailsCardComponent from '../details_components/DetailsCardComponent.js';
 import ListComponent from '../details_components/ListComponent.js';
-import FooterComponent from '../layouts/FooterComponent.js';
+//import FooterComponent from '../layouts/FooterComponent.js';
 
 //Functions Imports
 import { useLocation } from 'react-router-dom';
@@ -62,9 +62,7 @@ export default function DetailsContainer() {
         setDetails(data);
     }, [data]);
     return (
-        <React.Fragment>
-            <HeaderComponent />
-            <HeadingComponent />
+        <>
             {loading ? (
                 <LoadingSpinner />
             ) : (
@@ -100,7 +98,6 @@ export default function DetailsContainer() {
                     )}
                 </>
             )}
-            <FooterComponent />
-        </React.Fragment>
+        </>
     );
 }

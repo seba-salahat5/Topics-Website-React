@@ -17,8 +17,10 @@ padding-left: 10px;
 padding-right: 10px;
 padding-top: 12px;
 padding-bottom: 20px;
-overflow: hidden;
-white-space: nowrap;
+height: 160px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 `;
 
 const CardSubTitle = styled.h3`
@@ -58,7 +60,7 @@ export default function CardComponent({ image, topic, category, rating, name }) 
         <Card className={darkMode?'dark-mode':'light-mode'}>
             <ImageComponent imageSrc={imageSrc}  alt={topic}/>
             <CardBody>
-                <CardSubTitle>{category}</CardSubTitle>
+                <CardSubTitle>{category}</CardSubTitle> 
                 <CardTitle>{topic}</CardTitle>
                 <CardRatingDiv>
                     <RatingBarComponent rating={rating} />

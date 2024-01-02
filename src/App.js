@@ -3,6 +3,10 @@ import { getFromLocalStorage, setInLocalStorage } from './local_storage_function
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import HomeContainer from './pages/HomeContainer.js';
 import DetailsContainer from './pages/DetailsContainer.js';
+import HeaderComponent from './layouts/HeaderComponent.js';
+import HeadingComponent from './shared_components/HeadingComponent.js';
+import FooterComponent from './layouts/FooterComponent.js';
+
 import { THEME } from './constants.js';
 import './index.css';
 
@@ -21,10 +25,15 @@ function App() {
       <div style={{backgroundColor: darkMode ? 'var(--dark_bg_body)' : 'var(--bg_body)', color: darkMode ? 'var(--dark_body-text)' : 'var(--body-text)' }}>
         <React.StrictMode>
           <BrowserRouter>
-            <Switch>
-              <Route exact path="/" component={HomeContainer} />
-              <Route path="/details" component={DetailsContainer} />
-            </Switch>
+            <>
+              <HeaderComponent />
+              <HeadingComponent />
+              <Switch>
+                <Route exact path="/" component={HomeContainer} />
+                <Route path="/details" component={DetailsContainer} />
+              </Switch>
+              <FooterComponent />
+            </>
           </BrowserRouter>
         </React.StrictMode>
       </div>

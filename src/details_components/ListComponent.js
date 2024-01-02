@@ -7,6 +7,7 @@ import { checkmarkCircleOutline } from 'ionicons/icons';
 const DetailsDiv = styled.div`
 margin: 50px 20px 20px 240px;
 width: 43%;
+padding-bottom: 250px;
 border-radius: 3px;
 
 @media screen and (max-width: 1190px){
@@ -43,7 +44,6 @@ background-color: var(--bg_default);
 `;
 
 const StyledH3 = styled.h3`
-white-space: nowrap;
 text-overflow: ellipsis;
 display: -webkit-box;
 -webkit-line-clamp: 2;

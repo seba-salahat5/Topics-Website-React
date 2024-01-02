@@ -20,6 +20,10 @@ border-radius: 3px;
 white-space: nowrap;
 overflow: hidden;
 text-overflow: ellipsis;
+
+@media screen and (max-width: 400px){
+    font-size: 13px;
+}
 `;
 
 const StyledIcon = styled(IonIcon)`

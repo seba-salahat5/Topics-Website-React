@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import {DarkModeContext} from "../App";
 import styled from 'styled-components';
 import { IonIcon } from '@ionic/react';
 import { heart } from 'ionicons/icons';
@@ -19,14 +20,14 @@ align-items: center;
 justify-content: center;
 position: relative;
 padding-bottom: 15px;
-position: fixed;
-background-color = var(--bg_body);
+background-color: var(--bg_body);
 bottom: 0;
 `;
 
 export default function FooterComponent() {
+    const { darkMode  } = useContext(DarkModeContext);
     return (
-        <StyledFooter>
+        <StyledFooter className={darkMode?'dark-mode':'light-mode'}>
             <h4>Developed with <StyledIcon icon={heart}></StyledIcon> &copy; 2023</h4>
         </StyledFooter>
     );

@@ -27,6 +27,14 @@ left: 52%;
     margin-right: auto;
     margin-top: 35px;
 }
+
+@media screen and (max-width: 400px){
+    min-width: 275px;
+}
+
+@media screen and (max-width: 350px){
+    min-width: 245px;
+}
 `;
 
 const CardBody = styled.div`
@@ -43,7 +51,6 @@ padding-top: 12px;
 padding-bottom: 20px;
 margin: 10px;
 overflow: hidden;
-white-space: nowrap;
 `;
 
 const CardText = styled.h3`
@@ -78,7 +85,7 @@ export default function DetailsCardComponent({ image, topic, name }) {
             <CardBody>
                 <ImageComponent imageSrc={imageSrc}  alt={topic} />
                 <CardBox>
-                    <CardText><strong>{topic}</strong> by: <a href="#">{name}</a></CardText>
+                    <CardText><strong>{topic}</strong> by: <a href='#'>{name}</a></CardText>
                     <InnerBox>
                         <InnerText>Interested about this topic?</InnerText>
                         <Button buttonText={"Add To Favourites"} buttonIcon={heartOutline} onClickEvent={() => { console.log("Added To Fav") }} />
