@@ -5,7 +5,8 @@ import HomeContainer from './containers/HomeContainer.js';
 import DetailsContainer from './containers/DetailsContainer.js';
 import FavouritesProvider from './contexts/FavouritesProvider.js';
 import ThemeProvider from './contexts/ThemeProvider.js';
-import './index.css';
+import 'https://seba-salahat5.github.io/topics-react/index.css';
+
 
 function App() {
   return (
