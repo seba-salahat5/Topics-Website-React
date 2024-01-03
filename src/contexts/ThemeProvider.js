@@ -12,7 +12,7 @@ export const useTheme = () => {
 };
 
 const ThemeProvider = ({ children }) => {
-    const [darkMode, setDarkMode] = useState(getFromLocalStorage(THEME ,));
+    const [darkMode, setDarkMode] = useState(getFromLocalStorage(THEME , false));
 
     useEffect(() => {
         setInLocalStorage(THEME, darkMode);

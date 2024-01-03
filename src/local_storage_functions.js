@@ -12,6 +12,6 @@ export let getFromLocalStorage = function (key, defaultValue) {
         return (storedValue !== null) ? JSON.parse(storedValue) : defaultValue;
     } catch (err) {
         console.log(err);
-        return localStorageValue[key];
+        return defaultValue;
     }
 };
