@@ -9,7 +9,7 @@ import ListComponent from '../details_components/ListComponent.js';
 //Functions Imports
 import { useLocation } from 'react-router-dom';
 import { API_URL } from '../constants.js';
-import { useApi } from '../customized_hooks/API_Hooks.js';
+import { useApi } from '../customized_hooks/useApi.js';
 import { useFavourites } from '../contexts/FavouritesProvider.js';
 
 const DarkBanner = styled.section`

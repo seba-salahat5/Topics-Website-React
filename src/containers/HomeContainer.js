@@ -11,7 +11,7 @@ import LoadingSpinner from '../shared_components/LoadingSpinner.js';
 // Functions Imports
 import { Link } from 'react-router-dom';
 import { API_URL } from '../constants.js';
-import { useApi } from '../customized_hooks/API_Hooks.js';
+import { useApi } from '../customized_hooks/useApi.js';
 import { extractCategories, onFilterChange, onSortChange } from '../javaScript_functions/topics_functions.js';
 
 const StyledMain = styled.main`
