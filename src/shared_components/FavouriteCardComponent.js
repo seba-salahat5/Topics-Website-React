@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import RatingBarComponent from '../shared_components/RatingBarComponent.js';
-import ImageComponent from '../shared_components/ImageComponent.js';
+import RatingBarComponent from './RatingBarComponent.js';
+import ImageComponent from './ImageComponent.js';
 
 const FlexItem = styled.div`
 width: 140px;
@@ -45,7 +45,7 @@ export default function FavouriteCardComponent({ image, topic, rating}) {
                     <CardTitle>{topic}</CardTitle>
                     <RatingBarComponent rating={rating}/>
                 </InfoBox>
-            </FavCardbox>
+         </FavCardbox>
         </FlexItem>
     );
 }

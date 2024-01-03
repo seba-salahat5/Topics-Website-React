@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { heartOutline } from 'ionicons/icons';
 import ImageComponent from '../shared_components/ImageComponent.js';
 import Button from '../details_components/Button.js';
-import { useFavourites } from '../context_functions/FavouritesProvider.js';
+import { useFavourites } from '../contexts/FavouritesProvider.js';
 
 const Card = styled.aside`
 width: 50%;

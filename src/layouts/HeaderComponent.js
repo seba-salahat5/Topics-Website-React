@@ -1,5 +1,6 @@
 import React from "react";
-import {useTheme} from '../context_functions/ThemeProvider.js';
+import {useTheme} from '../contexts/ThemeProvider.js';
+import {useFavourites} from '../contexts/FavouritesProvider.js';
 import styled from 'styled-components';
 import { moonOutline, heartOutline } from 'ionicons/icons';
 import IconButton from '../shared_components/IconButton.js';
@@ -24,16 +25,17 @@ color: var(--brand-primary);
 const ButtonSpan = styled.span`
 margin: 12px 0px;
 `;
-export default function HeaderComponent({handleFavBtn}) {
+export default function HeaderComponent() {
     const { darkMode ,toggleTheme } = useTheme();
-    let buttonText = darkMode ? "Dark Mode" : "Light Mode";
+    const {  toggleShowingFav } = useFavourites();
+    let buttonText = darkMode ? "Light Mode" : "Dark Mode";
     
     return (
         <Header>
             <HeaderTitle>Web Topics</HeaderTitle>
             <ButtonSpan>
                 <IconButton buttonText={buttonText} buttonIcon={moonOutline} onClickEvent={toggleTheme} />
-                <IconButton buttonText={"Favourites"} buttonIcon={heartOutline} onClickEvent={handleFavBtn} />
+                <IconButton buttonText={"Favourites"} buttonIcon={heartOutline} onClickEvent={toggleShowingFav} />
             </ButtonSpan>
         </Header>
 

@@ -6,13 +6,10 @@ export let setInLocalStorage = function (key, value) {
         localStorageValue = { key: key, value: value };
     }
 };
-export let getFromLocalStorage = function (key) {
+export let getFromLocalStorage = function (key, defaultValue) {
     try {
         let storedValue = localStorage.getItem(key);
-        if (storedValue === null) {
-            localStorage.setItem(key, JSON.stringify(storedValue));
-        }
-        return JSON.parse(storedValue)
+        return (storedValue !== null) ? JSON.parse(storedValue) : defaultValue;
     } catch (err) {
         console.log(err);
         return localStorageValue[key];

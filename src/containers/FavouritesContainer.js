@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import FavouriteCardComponent from './FavouriteCardComponent';
-import { useFavourites } from '../context_functions/FavouritesProvider';
+import FavouriteCardComponent from '../shared_components/FavouriteCardComponent';
+import { useFavourites } from '../contexts/FavouritesProvider';
 
 const FavouritesPanel = styled.div`
 position: sticky;
@@ -18,7 +18,7 @@ display: flex;
 flex-direction: row;
 `;
 
-export default function FavouritesComponent() {
+export default function FavouritesContainer() {
     const { favourites } = useFavourites();
     console.log(favourites);
     return (

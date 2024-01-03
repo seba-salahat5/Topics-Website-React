@@ -12,17 +12,17 @@ export const useTheme = () => {
 };
 
 const ThemeProvider = ({ children }) => {
-    const [darkMode, setDarkMode] = useState(getFromLocalStorage(THEME) || false);
+    const [darkMode, setDarkMode] = useState(getFromLocalStorage(THEME ,));
 
     useEffect(() => {
         setInLocalStorage(THEME, darkMode);
         const body = document.body;
-        body.classList.toggle('light-mode');
-        body.classList.toggle('dark-mode');
+        body.className=darkMode?'dark-mode':'light-mode' ;
+        
     }, [darkMode]);
 
     function toggleTheme() {
-        setDarkMode(!darkMode);
+        setDarkMode((prev) => !prev);
     }
 
     return (
@@ -33,4 +33,3 @@ const ThemeProvider = ({ children }) => {
 };
 
 export default ThemeProvider;
-

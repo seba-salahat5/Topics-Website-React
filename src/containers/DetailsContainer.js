@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 //View Imports
 import styled from 'styled-components';
 import LoadingSpinner from '../shared_components/LoadingSpinner.js';
@@ -10,7 +10,7 @@ import ListComponent from '../details_components/ListComponent.js';
 import { useLocation } from 'react-router-dom';
 import { API_URL } from '../constants.js';
 import { useApi } from '../customized_hooks/API_Hooks.js';
-import { useFavourites } from '../context_functions/FavouritesProvider.js';
+import { useFavourites } from '../contexts/FavouritesProvider.js';
 
 const DarkBanner = styled.section`
 background-color: var(--dark-container-bg);

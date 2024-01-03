@@ -1,39 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import HomeContainer from './pages/HomeContainer.js';
-import DetailsContainer from './pages/DetailsContainer.js';
-import HeaderComponent from './layouts/HeaderComponent.js';
-import HeadingComponent from './shared_components/HeadingComponent.js';
-import FavouritesComponent from './shared_components/FavouritesComponent.js';
-import FooterComponent from './layouts/FooterComponent.js';
-import FavouritesProvider from './context_functions/FavouritesProvider.js';
-import ThemeProvider from './context_functions/ThemeProvider.js';
+import Layout from './layouts/Layout.js';
+import HomeContainer from './containers/HomeContainer.js';
+import DetailsContainer from './containers/DetailsContainer.js';
+import FavouritesProvider from './contexts/FavouritesProvider.js';
+import ThemeProvider from './contexts/ThemeProvider.js';
 import './index.css';
 
-
-
 function App() {
-  const [showFavourites, setShowFavourites] = useState(false);
   return (
     <ThemeProvider>
       <FavouritesProvider>
         <BrowserRouter>
-          <>
-          <HeaderComponent handleFavBtn={() => { setShowFavourites(!showFavourites); console.log(showFavourites) }} />
-              <HeadingComponent />
-              <Switch>
-                <Route exact path="/" component={HomeContainer} />
-                <Route path="/details" component={DetailsContainer} />
-              </Switch>
-              <>
-                {showFavourites && (
-                  <>
-                    <FavouritesComponent />
-                  </>
-                )}
-              </>
-              <FooterComponent />
-          </>
+          <Layout>
+            <Switch>
+              <Route exact path="/" component={HomeContainer} />
+              <Route path="/details" component={DetailsContainer} />
+            </Switch>
+          </Layout>
         </BrowserRouter>
       </FavouritesProvider>
     </ThemeProvider>

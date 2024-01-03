@@ -17,7 +17,8 @@ export let isFav = function (topicId, favorites) {
 }
 
 const FavouritesProvider = ({ children }) => {
-  const [favourites, setFavourites] = useState(getFromLocalStorage(FAV) || []);
+  const [favourites, setFavourites] = useState(getFromLocalStorage(FAV, []));
+  const [isFavShown, setisFavShown] = useState(false);
 
   useEffect(() => {
     setInLocalStorage(FAV, favourites);
@@ -33,8 +34,12 @@ const FavouritesProvider = ({ children }) => {
     setFavourites((prevFavourites) => prevFavourites.filter((fav) => fav.id !== id));
   };
 
+  function toggleShowingFav() {
+    setisFavShown(!isFavShown);
+}
+
   return (
-    <FavouritesContext.Provider value={{ favourites, addFavourite, removeFavourite, isFav: (topicId) => isFav(topicId, favourites), }}>
+    <FavouritesContext.Provider value={{ favourites, addFavourite, removeFavourite, isFav: (topicId) => isFav(topicId, favourites), toggleShowingFav, isFavShown}}>
       {children}
     </FavouritesContext.Provider>
   );
