@@ -1,9 +1,8 @@
-let localStorageValue;
 export let setInLocalStorage = function (key, value) {
     try {
         localStorage.setItem(key, JSON.stringify(value));
     } catch (err) {
-        localStorageValue = { key: key, value: value };
+        console.log(err);
     }
 };
 export let getFromLocalStorage = function (key, defaultValue) {
