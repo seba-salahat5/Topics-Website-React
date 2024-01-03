@@ -8,8 +8,13 @@ export let setInLocalStorage = function (key, value) {
 };
 export let getFromLocalStorage = function (key) {
     try {
-        return JSON.parse(localStorage.getItem(key));
+        let storedValue = localStorage.getItem(key);
+        if (storedValue === null) {
+            localStorage.setItem(key, JSON.stringify(storedValue));
+        }
+        return JSON.parse(storedValue)
     } catch (err) {
+        console.log(err);
         return localStorageValue[key];
     }
 };

@@ -24,7 +24,7 @@ color: var(--brand-primary);
 const ButtonSpan = styled.span`
 margin: 12px 0px;
 `;
-export default function HeaderComponent() {
+export default function HeaderComponent({handleFavBtn}) {
     const { darkMode ,toggleTheme } = useContext(DarkModeContext);
     let buttonText = darkMode ? "Dark Mode" : "Light Mode";
     
@@ -33,7 +33,7 @@ export default function HeaderComponent() {
             <HeaderTitle>Web Topics</HeaderTitle>
             <ButtonSpan>
                 <IconButton buttonText={buttonText} buttonIcon={moonOutline} onClickEvent={toggleTheme} />
-                <IconButton buttonText={"Favourites"} buttonIcon={heartOutline} onClickEvent={() => { console.log("favourites") }} />
+                <IconButton buttonText={"Favourites"} buttonIcon={heartOutline} onClickEvent={handleFavBtn} />
             </ButtonSpan>
         </Header>
 

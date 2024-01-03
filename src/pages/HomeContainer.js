@@ -3,14 +3,11 @@ import React, { useEffect, useState, useContext } from 'react';
 // View Imports
 import { DarkModeContext } from "../App";
 import styled from 'styled-components';
-//import HeaderComponent from '../layouts/HeaderComponent.js';
-//import HeadingComponent from '../shared_components/HeadingComponent.js';
 import SearchFieldComonent from '../home_components/SearchFieldComonent.js';
 import SelectComponent from '../home_components/SelectComponent.js';
-import CardComponent from '../shared_components/CardComponent.js';
+import CardComponent from '../home_components/CardComponent.js';
 import CardsGridComponent from '../home_components/CardsGridComponent.js';
 import LoadingSpinner from '../shared_components/LoadingSpinner.js';
-//import FooterComponent from '../layouts/FooterComponent.js';
 
 // Functions Imports
 import { Link } from 'react-router-dom';

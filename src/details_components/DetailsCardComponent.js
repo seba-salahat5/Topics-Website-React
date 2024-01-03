@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { heartOutline } from 'ionicons/icons';
 import ImageComponent from '../shared_components/ImageComponent.js';
 import Button from '../details_components/Button.js';
+import { useFavourites } from '../favourites_functions/FavouritesProvider.js';
 
 const Card = styled.aside`
 width: 50%;
@@ -78,17 +79,20 @@ font-size: 14px;
 color: var(--card-text);
 text-align: center;
 `;
-export default function DetailsCardComponent({ image, topic, name }) {
+export default function DetailsCardComponent({ image, topic, name, id, handleCardButton}) {
     const imageSrc = `/assets/${image}`;
+    const { favourites, isFav } = useFavourites();
+    const isCourseInFavourites = isFav(id, favourites);
+    const buttonText = isCourseInFavourites ? "Remove From Favorites" : "Add To Favorites";
     return (
         <Card>
             <CardBody>
                 <ImageComponent imageSrc={imageSrc}  alt={topic} />
                 <CardBox>
-                    <CardText><strong>{topic}</strong> by: <a href='#'>{name}</a></CardText>
+                    <CardText><strong>{topic}</strong> by: <a href="#">{name}</a></CardText>
                     <InnerBox>
                         <InnerText>Interested about this topic?</InnerText>
-                        <Button buttonText={"Add To Favourites"} buttonIcon={heartOutline} onClickEvent={() => { console.log("Added To Fav") }} />
+                        <Button buttonText={buttonText} buttonIcon={heartOutline} onClickEvent={handleCardButton} />
                         <CardFooter>Unlimited Credits</CardFooter>
                     </InnerBox>
                 </CardBox>

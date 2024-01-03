@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
-import {DarkModeContext} from "../App";
+import {DarkModeContext} from "../App.js";
 import styled from 'styled-components';
-import RatingBarComponent from '../shared_components/RatingBarComponent';
-import ImageComponent from './ImageComponent.js';
+import RatingBarComponent from '../shared_components/RatingBarComponent.js';
+import ImageComponent from '../shared_components/ImageComponent.js';
 
 const Card = styled.div`
 border-radius: 10px;
@@ -17,7 +17,7 @@ padding-left: 10px;
 padding-right: 10px;
 padding-top: 12px;
 padding-bottom: 20px;
-height: 160px;
+height: 150px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
@@ -58,7 +58,7 @@ export default function CardComponent({ image, topic, category, rating, name }) 
     const { darkMode  } = useContext(DarkModeContext);
     return (
         <Card className={darkMode?'dark-mode':'light-mode'}>
-            <ImageComponent imageSrc={imageSrc}  alt={topic}/>
+            <ImageComponent imageSrc={imageSrc}  alt={topic} height={'130px'}/>
             <CardBody>
                 <CardSubTitle>{category}</CardSubTitle> 
                 <CardTitle>{topic}</CardTitle>
