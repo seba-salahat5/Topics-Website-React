@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // View Imports
-import { DarkModeContext } from "../App";
 import styled from 'styled-components';
 import SearchFieldComonent from '../home_components/SearchFieldComonent.js';
 import SelectComponent from '../home_components/SelectComponent.js';
@@ -13,7 +12,7 @@ import LoadingSpinner from '../shared_components/LoadingSpinner.js';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../constants.js';
 import { useApi } from '../customized_hooks/API_Hooks.js';
-import {extractCategories, onFilterChange, onSortChange} from '../javaScript_functions/topics_functions.js';
+import { extractCategories, onFilterChange, onSortChange } from '../javaScript_functions/topics_functions.js';
 
 const StyledMain = styled.main`
 margin-top: 15px;
@@ -55,8 +54,6 @@ text-decoration: none;
 color: inherit;
 `;
 export default function HomeContainer() {
-    const { darkMode } = useContext(DarkModeContext);
-
     const [topicsArray, setTopicsArray] = useState(null);
     const [inputValue, setInputValue] = useState('');
     const [filterOptions, setFilterOptions] = useState([]);
@@ -67,11 +64,11 @@ export default function HomeContainer() {
     const { data, loading, error } = useApi(`${API_URL}/list`, inputValue);
 
     useEffect(() => {
-        if(data){
+        if (data) {
             extractCategories(data, (categories) => {
                 setFilterOptions(categories);
             });
-    
+
             let filteredTopics = onFilterChange(data, selectedFilter);
             let sortedTopics = onSortChange(filteredTopics, selectedSort);
             setTopicsArray(sortedTopics);
@@ -79,57 +76,53 @@ export default function HomeContainer() {
     }, [data, selectedFilter, selectedSort]);
 
     return (
-        <React.Fragment>
-
-            <StyledMain>
-                <MainLine className={darkMode ? 'dark-mode' : 'light-mode'}>
-                    <SearchFieldComonent inputValue={inputValue} placeholder="Search the website..." onInput={
-                        (inputValue) => {
-                            setInputValue(inputValue);
-                        }
-                    } />
-                    <SelectContainer className={darkMode ? 'dark-mode' : 'light-mode'}>
-                        <SelectComponent type={'Sort'} options={sortOptions} onSelect={(selectedValue)=> {setSelectedSort(selectedValue)}} />
-                        <SelectComponent type={'Filter'} options={filterOptions} onSelect={(selectedValue)=> {setSelectedFilter(selectedValue)}}/>
-                    </SelectContainer>
-                </MainLine>
-                {loading ? (
-                    <LoadingSpinner />
-                ) : (
-                    <>
-                        {error ? (
-                            <div>
-                                <h3><strong>Something went wrong. Web topics failed to load.</strong></h3>
-                            </div>
-                        ) : (
-                            <>
-                                {topicsArray !== null ? (
-                                    <>
-                                        <div>
-                                            <h3><strong>"{topicsArray.length}" Web Topics Found</strong></h3>
-                                        </div>
-                                        <CardsGridComponent>
-                                            {topicsArray.map((topic) => (
-                                                <StyledLink to={`/details/${topic.id}?topicId=${topic.id}`} key={topic.id}>
-                                                    <Column key={topic.id}>
-                                                        <CardComponent image={topic.image} topic={topic.topic} category={topic.category} rating={topic.rating} name={topic.name} />
-                                                    </Column>
-                                                </StyledLink>
-                                            ))}
-                                        </CardsGridComponent>
-                                    </>
-
-                                ) : (
+        <StyledMain>
+            <MainLine>
+                <SearchFieldComonent inputValue={inputValue} placeholder="Search the website..." onInput={
+                    (inputValue) => {
+                        setInputValue(inputValue);
+                    }
+                } />
+                <SelectContainer>
+                    <SelectComponent type={'Sort'} options={sortOptions} onSelect={(selectedValue) => { setSelectedSort(selectedValue) }} />
+                    <SelectComponent type={'Filter'} options={filterOptions} onSelect={(selectedValue) => { setSelectedFilter(selectedValue) }} />
+                </SelectContainer>
+            </MainLine>
+            {loading ? (
+                <LoadingSpinner />
+            ) : (
+                <>
+                    {error ? (
+                        <div>
+                            <h3><strong>Something went wrong. Web topics failed to load.</strong></h3>
+                        </div>
+                    ) : (
+                        <>
+                            {topicsArray !== null ? (
+                                <>
                                     <div>
-                                        <h3><strong>Something went wrong. Web topics failed to load.</strong></h3>
+                                        <h3><strong>"{topicsArray.length}" Web Topics Found</strong></h3>
                                     </div>
-                                )}
-                            </>
-                        )}
-                    </>
-                )}
-            </StyledMain>
-           
-        </React.Fragment>
+                                    <CardsGridComponent>
+                                        {topicsArray.map((topic) => (
+                                            <StyledLink to={`/details/${topic.id}?topicId=${topic.id}`} key={topic.id}>
+                                                <Column key={topic.id}>
+                                                    <CardComponent image={topic.image} topic={topic.topic} category={topic.category} rating={topic.rating} name={topic.name} />
+                                                </Column>
+                                            </StyledLink>
+                                        ))}
+                                    </CardsGridComponent>
+                                </>
+
+                            ) : (
+                                <div>
+                                    <h3><strong>Something went wrong. Web topics failed to load.</strong></h3>
+                                </div>
+                            )}
+                        </>
+                    )}
+                </>
+            )}
+        </StyledMain>
     );
 }

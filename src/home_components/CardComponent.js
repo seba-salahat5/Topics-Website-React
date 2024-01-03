@@ -1,5 +1,4 @@
-import React, {useContext} from "react";
-import {DarkModeContext} from "../App.js";
+import React from "react";
 import styled from 'styled-components';
 import RatingBarComponent from '../shared_components/RatingBarComponent.js';
 import ImageComponent from '../shared_components/ImageComponent.js';
@@ -55,9 +54,8 @@ text-overflow: ellipsis;
 
 export default function CardComponent({ image, topic, category, rating, name }) {
     const imageSrc = `/assets/${image}`;
-    const { darkMode  } = useContext(DarkModeContext);
     return (
-        <Card className={darkMode?'dark-mode':'light-mode'}>
+        <Card>
             <ImageComponent imageSrc={imageSrc}  alt={topic} height={'130px'}/>
             <CardBody>
                 <CardSubTitle>{category}</CardSubTitle> 

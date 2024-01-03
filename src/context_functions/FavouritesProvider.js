@@ -20,7 +20,6 @@ const FavouritesProvider = ({ children }) => {
   const [favourites, setFavourites] = useState(getFromLocalStorage(FAV) || []);
 
   useEffect(() => {
-    console.log(favourites);
     setInLocalStorage(FAV, favourites);
   }, [favourites]);
 

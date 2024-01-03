@@ -1,5 +1,4 @@
-import React, {useContext} from "react";
-import {DarkModeContext} from "../App";
+import React from "react";
 import styled from 'styled-components';
 import { IonIcon } from '@ionic/react';
 
@@ -35,9 +34,8 @@ margin: 0px;
 `;
 
 export default function Button({ buttonText, buttonIcon, onClickEvent }) {
-    const { darkMode  } = useContext(DarkModeContext);
     return (
-        <StyledButton className={darkMode?'dark-mode':'light-mode'} onClick={onClickEvent}>
+        <StyledButton onClick={onClickEvent}>
             {buttonText}
             <StyledIcon icon={buttonIcon} />
         </StyledButton>

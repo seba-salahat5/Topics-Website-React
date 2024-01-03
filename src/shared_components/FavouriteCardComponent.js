@@ -1,6 +1,5 @@
-import React, {useContext} from "react";
-import {DarkModeContext} from "../App.js";
-import styled, { css } from 'styled-components';
+import React from "react";
+import styled from 'styled-components';
 import RatingBarComponent from '../shared_components/RatingBarComponent.js';
 import ImageComponent from '../shared_components/ImageComponent.js';
 
@@ -38,9 +37,8 @@ display: -webkit-box;
 
 export default function FavouriteCardComponent({ image, topic, rating}) {
     const imageSrc = `/assets/${image}`;
-    const { darkMode  } = useContext(DarkModeContext);
     return (
-        <FlexItem className={darkMode ? 'dark-mode' : 'light-mode'}>
+        <FlexItem>
             <FavCardbox>
                 <ImageComponent imageSrc={imageSrc}  alt={topic} height={'70px'}/>
                 <InfoBox>

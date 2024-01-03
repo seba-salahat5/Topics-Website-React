@@ -1,5 +1,4 @@
-import React, {useContext} from "react";
-import {DarkModeContext} from "../App";
+import React from "react";
 import styled, { keyframes } from 'styled-components';
 
 const rippleAnimation = keyframes`
@@ -65,10 +64,9 @@ border-color: var(--brand-secondary);
 animation-delay: -0.5s;
 `;
 const LoadingSpinner = () => {
-  const { darkMode  } = useContext(DarkModeContext);
     return (
         <SpinnerContainer>
-            <RippleOuter className={darkMode?'dark-mode':'light-mode'}>
+            <RippleOuter>
                 <Ripple>
                     <FirstChild/>
                     <SecondChild/>

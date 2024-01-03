@@ -1,5 +1,4 @@
-import React, {useContext} from "react";
-import {DarkModeContext} from "../App";
+import React from "react";
 import styled from 'styled-components';
 import { IonIcon } from '@ionic/react';
 import { heart } from 'ionicons/icons';
@@ -25,9 +24,8 @@ bottom: 0;
 `;
 
 export default function FooterComponent() {
-    const { darkMode  } = useContext(DarkModeContext);
     return (
-        <StyledFooter className={darkMode?'dark-mode':'light-mode'}>
+        <StyledFooter>
             <h4>Developed with <StyledIcon icon={heart}></StyledIcon> &copy; 2023</h4>
         </StyledFooter>
     );

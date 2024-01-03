@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-import { DarkModeContext } from "../App";
+import React from "react";
 import styled from 'styled-components';
 import FavouriteCardComponent from './FavouriteCardComponent';
-import { useFavourites } from '../favourites_functions/FavouritesProvider';
+import { useFavourites } from '../context_functions/FavouritesProvider';
 
 const FavouritesPanel = styled.div`
 position: sticky;
@@ -20,11 +19,10 @@ flex-direction: row;
 `;
 
 export default function FavouritesComponent() {
-    const { darkMode } = useContext(DarkModeContext);
     const { favourites } = useFavourites();
     console.log(favourites);
     return (
-        <FavouritesPanel className={darkMode ? 'dark-mode' : 'light-mode'}>
+        <FavouritesPanel>
             <h1> My Favourite Topics</h1>
             <FavoritesFlexbox>
                 {favourites.map((topic) => (

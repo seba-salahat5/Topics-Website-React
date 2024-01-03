@@ -1,5 +1,5 @@
-import React, {useContext} from "react";
-import {DarkModeContext} from "../App";
+import React from "react";
+import {useTheme} from '../context_functions/ThemeProvider.js';
 import styled from 'styled-components';
 import { moonOutline, heartOutline } from 'ionicons/icons';
 import IconButton from '../shared_components/IconButton.js';
@@ -25,11 +25,11 @@ const ButtonSpan = styled.span`
 margin: 12px 0px;
 `;
 export default function HeaderComponent({handleFavBtn}) {
-    const { darkMode ,toggleTheme } = useContext(DarkModeContext);
+    const { darkMode ,toggleTheme } = useTheme();
     let buttonText = darkMode ? "Dark Mode" : "Light Mode";
     
     return (
-        <Header className={darkMode?'dark-mode':'light-mode'}>
+        <Header>
             <HeaderTitle>Web Topics</HeaderTitle>
             <ButtonSpan>
                 <IconButton buttonText={buttonText} buttonIcon={moonOutline} onClickEvent={toggleTheme} />
