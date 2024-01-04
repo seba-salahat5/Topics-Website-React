@@ -1,6 +1,7 @@
 {
   "name": "topics-react",
   "version": "0.1.0",
+  "homepage": "https://seba-salahat5.github.io/topics-react",
   "private": true,
   "dependencies": {
     "@ionic/react": "^7.6.2",
@@ -44,8 +45,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "gh-pages": "^6.1.1",
-    "homepage": "https://seba-salahat5.github.io/topics-react"
+    "gh-pages": "^6.1.1"
   }
   
 }

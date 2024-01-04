@@ -10,7 +10,7 @@ function App() {
   return (
     <ThemeProvider>
       <FavouritesProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/topics-react">
           <Layout>
             <Switch>
               <Route exact path="/" component={HomeContainer} />
