@@ -57,7 +57,7 @@ export default function DetailsContainer() {
 
     const [details, setDetails] = useState(null);
     const { data, loading, error } = useApi(`${API_URL}/details/${topicId}`);
-    const { favourites, addFavourite, removeFavourite, isFav } = useFavourites();
+    const { favourites, addFavourite, removeFavourite, isFav, toggleShowingFav, isFavShown } = useFavourites();
 
     const handleFavouriteButton = () => {
         const isCourseInFavourites = isFav(details.id, favourites);
@@ -67,6 +67,7 @@ export default function DetailsContainer() {
         } else {
             addFavourite(details);
         }
+        if(!isFavShown)toggleShowingFav();
     };
 
     useEffect(() => {

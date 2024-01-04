@@ -25,9 +25,9 @@ font-size: 17px;
 `;
 
 export default function IconButton({ buttonText, buttonIcon, onClickEvent }) {
-    const EventHandler = () => {onClickEvent()}
+    const eventHandler = () => {onClickEvent()}
     return (
-        <Button onClick={EventHandler}>
+        <Button onClick={eventHandler}>
             <StyledIcon icon={buttonIcon} />
             {buttonText}
         </Button>

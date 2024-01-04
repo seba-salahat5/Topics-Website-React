@@ -35,7 +35,8 @@ const FavouritesProvider = ({ children }) => {
   };
 
   function toggleShowingFav() {
-    setisFavShown(!isFavShown);
+    setisFavShown((prev) => !prev);
+
 }
 
   return (

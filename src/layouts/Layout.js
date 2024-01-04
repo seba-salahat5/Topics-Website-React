@@ -13,11 +13,15 @@ export default function Layout({ children }) {
             <HeadingComponent />
             { children }
             <>
-              {isFavShown && (
+              {isFavShown ? (
                 <>
                   <FavouritesContainer />
                 </>
-              )}
+              ): (
+                <></>
+              )
+            
+            }
             </>
             <FooterComponent/>
 
