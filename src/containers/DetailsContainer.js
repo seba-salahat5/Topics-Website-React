@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LoadingSpinner from '../shared_components/LoadingSpinner.js';
 import RatingBarComponent from '../shared_components/RatingBarComponent.js';
-import DetailsCardComponent from '../details_components/DetailsCardComponent.js';
-import ListComponent from '../details_components/ListComponent.js';
+import DetailsCardComponent from '../Components/DetailsCardComponent.js';
+import ListComponent from '../Components/ListComponent.js';
 
 //Functions Imports
 import { useLocation } from 'react-router-dom';

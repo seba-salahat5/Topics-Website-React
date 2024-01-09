@@ -36,7 +36,7 @@ color: var(----body-text);
 `;
 
 
-export default function SearchFieldComonent({placeholder, onInput}) {
+export default function InputFieldComonent({placeholder, onInput}) {
     const [inputValue, setInputValue] = useState('');
     useDebounce(inputValue, onInput);
 

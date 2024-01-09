@@ -1,6 +1,7 @@
 import { DEBOUNCE_VALUE } from '../constants.js';
+
+let debounceDelay;
 export function useDebounce(input, action) {
-    let debounceDelay;
     clearTimeout(debounceDelay);
     return setTimeout(async () => {
         action(input);

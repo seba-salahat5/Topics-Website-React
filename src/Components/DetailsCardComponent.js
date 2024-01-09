@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { heartOutline } from 'ionicons/icons';
 import ImageComponent from '../shared_components/ImageComponent.js';
-import Button from '../details_components/Button.js';
+import Button from './Button.js';
 import { useFavourites } from '../contexts/FavouritesProvider.js';
 
 const Card = styled.aside`
@@ -80,7 +80,7 @@ color: var(--card-text);
 text-align: center;
 `;
 export default function DetailsCardComponent({ image, topic, name, id, handleCardButton}) {
-    const imageSrc = `/assets/${image}`;
+    const imageSrc = process.env.PUBLIC_URL + `/assets/${image}`;
     const { favourites, isFav } = useFavourites();
     const isCourseInFavourites = isFav(id, favourites);
     const buttonText = isCourseInFavourites ? "Remove From Favorites" : "Add To Favorites";

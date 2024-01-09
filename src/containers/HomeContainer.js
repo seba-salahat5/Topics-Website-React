@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 // View Imports
 import styled from 'styled-components';
-import SearchFieldComonent from '../home_components/SearchFieldComonent.js';
-import SelectComponent from '../home_components/SelectComponent.js';
-import CardComponent from '../home_components/CardComponent.js';
-import CardsGridComponent from '../home_components/CardsGridComponent.js';
+import InputFieldComonent from '../Components/InputFieldComonent.js';
+import SelectComponent from '../Components/SelectComponent.js';
+import CardComponent from '../Components/CardComponent.js';
+import CardsGridComponent from '../Components/CardsGridComponent.js';
 import LoadingSpinner from '../shared_components/LoadingSpinner.js';
 
 // Functions Imports
@@ -78,7 +78,7 @@ export default function HomeContainer() {
     return (
         <StyledMain>
             <MainLine>
-                <SearchFieldComonent inputValue={inputValue} placeholder="Search the website..." onInput={
+                <InputFieldComonent inputValue={inputValue} placeholder="Search the website..." onInput={
                     (inputValue) => {
                         setInputValue(inputValue);
                     }

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import RatingBarComponent from '../shared_components/RatingBarComponent.js';
 import ImageComponent from '../shared_components/ImageComponent.js';
 
+
 const Card = styled.div`
 border-radius: 10px;
 object-fit: cover;
@@ -53,7 +54,7 @@ text-overflow: ellipsis;
 `;
 
 export default function CardComponent({ image, topic, category, rating, name }) {
-    const imageSrc = `/assets/${image}`;
+    const imageSrc = process.env.PUBLIC_URL + `/assets/${image}`;
     return (
         <Card>
             <ImageComponent imageSrc={imageSrc}  alt={topic} height={'130px'}/>
