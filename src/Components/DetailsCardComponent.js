@@ -87,7 +87,7 @@ export default function DetailsCardComponent({ image, topic, name, id, handleCar
     return (
         <Card>
             <CardBody>
-                <ImageComponent imageSrc={imageSrc}  alt={topic} />
+                <ImageComponent imageSrc={imageSrc}  alt={topic} height= {'170px'} />
                 <CardBox>
                     <CardText><strong>{topic}</strong> by: <a href="#">{name}</a></CardText>
                     <InnerBox>

@@ -17,7 +17,7 @@ padding-left: 10px;
 padding-right: 10px;
 padding-top: 12px;
 padding-bottom: 20px;
-height: 150px;
+height: 165px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;

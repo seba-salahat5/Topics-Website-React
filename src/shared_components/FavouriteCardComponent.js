@@ -36,7 +36,7 @@ display: -webkit-box;
 `;
 
 export default function FavouriteCardComponent({ image, topic, rating}) {
-    const imageSrc = `/assets/${image}`;
+    const imageSrc = process.env.PUBLIC_URL + `/assets/${image}`;
     return (
         <FlexItem>
             <FavCardbox>
