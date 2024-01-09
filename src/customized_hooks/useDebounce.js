@@ -1,9 +1,14 @@
 import { DEBOUNCE_VALUE } from '../constants.js';
 
 let debounceDelay;
-export function useDebounce(input, action) {
-    clearTimeout(debounceDelay);
-    return setTimeout(async () => {
-        action(input);
-    }, DEBOUNCE_VALUE);
+export function useDebounce(callBack) {
+    const DebouncedAction = (...args) => {
+        clearTimeout(debounceDelay);
+        debounceDelay = setTimeout(async () => {
+            callBack(...args);
+        }, DEBOUNCE_VALUE)
+    }
+    return {
+        DebouncedAction
+    };
 }

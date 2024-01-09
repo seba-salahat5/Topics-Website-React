@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { IonIcon } from '@ionic/react';
 import { searchOutline } from 'ionicons/icons';
-import {useDebounce} from '../customized_hooks/useDebounce.js';
 
 const SearchBar = styled.span`
 width: 90%;
@@ -37,12 +36,8 @@ color: var(----body-text);
 
 
 export default function InputFieldComonent({placeholder, onInput}) {
-    const [inputValue, setInputValue] = useState('');
-    useDebounce(inputValue, onInput);
-
     const handleInputChange = (event) => {
-      const value = event.target.value;
-      setInputValue(value);
+        onInput(event.target.value)
     };
 
     return (

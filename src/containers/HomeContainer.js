@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 
 // View Imports
 import styled from 'styled-components';
-import InputFieldComonent from '../Components/InputFieldComonent.js';
-import SelectComponent from '../Components/SelectComponent.js';
-import CardComponent from '../Components/CardComponent.js';
-import CardsGridComponent from '../Components/CardsGridComponent.js';
+import InputFieldComonent from '../components/InputFieldComonent.js';
+import SelectComponent from '../components/SelectComponent.js';
+import CardComponent from '../components/CardComponent.js';
+import CardsGridComponent from '../components/CardsGridComponent.js';
 import LoadingSpinner from '../shared_components/LoadingSpinner.js';
 
 // Functions Imports
 import { Link } from 'react-router-dom';
 import { API_URL } from '../constants.js';
 import { useApi } from '../customized_hooks/useApi.js';
+import { useDebounce } from '../customized_hooks/useDebounce.js';
 import { extractCategories, onFilterChange, onSortChange } from '../javaScript_functions/topics_functions.js';
 
 const StyledMain = styled.main`
@@ -62,7 +63,9 @@ export default function HomeContainer() {
     const [selectedSort, setSelectedSort] = useState("Default");
 
     const { data, loading, error } = useApi(`${API_URL}/list`, inputValue);
-
+    const { DebouncedAction } = useDebounce((term) => {
+        setInputValue(term);
+    });
     useEffect(() => {
         if (data) {
             extractCategories(data, (categories) => {
@@ -78,9 +81,9 @@ export default function HomeContainer() {
     return (
         <StyledMain>
             <MainLine>
-                <InputFieldComonent inputValue={inputValue} placeholder="Search the website..." onInput={
+                <InputFieldComonent placeholder="Search the website..." onInput={
                     (inputValue) => {
-                        setInputValue(inputValue);
+                        DebouncedAction(inputValue);
                     }
                 } />
                 <SelectContainer>
