@@ -14,7 +14,7 @@ Guidlines:
 #Context is used for the global data (Theme and Favorites List)
 #local Storage is used to presist the data
 
-Demo: https://seba-salahat5.github.io/Web-Courses-Website/
+Demo: https://seba-salahat5.github.io/web-courses/
 
 
 
