@@ -1,4 +1,4 @@
-Simple web app, about web courses Using ReactJS\
+Simple web app, about web courses Using ReactJS
 
 Guidlines:\
 Responsive Web site\
