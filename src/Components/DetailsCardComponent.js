@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { heartOutline } from 'ionicons/icons';
-import ImageComponent from '../shared_components/ImageComponent.js';
+import ImageComponent from './shared/ImageComponent.js';
 import Button from './Button.js';
 import { useFavourites } from '../contexts/FavouritesProvider.js';
 

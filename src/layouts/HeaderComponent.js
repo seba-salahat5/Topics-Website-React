@@ -3,7 +3,7 @@ import {useTheme} from '../contexts/ThemeProvider.js';
 import {useFavourites} from '../contexts/FavouritesProvider.js';
 import styled from 'styled-components';
 import { moonOutline, heartOutline } from 'ionicons/icons';
-import IconButton from '../shared_components/IconButton.js';
+import IconButton from '../components/shared/IconButton.js';
 
 const Header = styled.header`
 background-color: var(--bg_default);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 
 // View Imports
 import styled from 'styled-components';
@@ -6,7 +6,7 @@ import InputFieldComonent from '../components/InputFieldComonent.js';
 import SelectComponent from '../components/SelectComponent.js';
 import CardComponent from '../components/CardComponent.js';
 import CardsGridComponent from '../components/CardsGridComponent.js';
-import LoadingSpinner from '../shared_components/LoadingSpinner.js';
+import LoadingSpinner from '../components/shared/LoadingSpinner.js';
 
 // Functions Imports
 import { Link } from 'react-router-dom';
@@ -61,8 +61,15 @@ export default function HomeContainer() {
     const sortOptions = ['Default', 'Topic Title', 'Author Name'];
     const [selectedFilter, setSelectedFilter] = useState("Default");
     const [selectedSort, setSelectedSort] = useState("Default");
-
-    const { data, loading, error } = useApi(`${API_URL}/list`, inputValue);
+    
+    const url = useMemo(() => {
+        const newUrl = new URL(`${API_URL}/list`);
+        if (inputValue) {
+          newUrl.searchParams.set('phrase', inputValue);
+        }
+        return newUrl;
+    }, [inputValue]);
+    const { data, loading, error } = useApi(url);
     const { DebouncedAction } = useDebounce((term) => {
         setInputValue(term);
     });

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 //View Imports
 import styled from 'styled-components';
-import LoadingSpinner from '../shared_components/LoadingSpinner.js';
-import RatingBarComponent from '../shared_components/RatingBarComponent.js';
+import LoadingSpinner from '../components/shared/LoadingSpinner.js';
+import RatingBarComponent from '../components/shared/RatingBarComponent.js';
 import DetailsCardComponent from '../components/DetailsCardComponent.js';
 import ListComponent from '../components/ListComponent.js';
 

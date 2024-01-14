@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import FavouriteCardComponent from '../shared_components/FavouriteCardComponent';
-import { useFavourites } from '../contexts/FavouritesProvider';
+import FavouriteCardComponent from '../components/shared/FavouriteCardComponent.js';
+import { useFavourites } from '../contexts/FavouritesProvider.js';
 
 const FavouritesPanel = styled.div`
 position: sticky;

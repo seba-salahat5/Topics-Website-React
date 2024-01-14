@@ -1,18 +1,10 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect} from 'react';
 import axios from 'axios';
 
-export function useApi(baseUrl, inputTerm) {
+export function useApi(url) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const url = useMemo(() => {
-    const newUrl = new URL(baseUrl);
-    if (inputTerm) {
-      newUrl.searchParams.set('phrase', inputTerm);
-    }
-    return newUrl;
-  }, [baseUrl, inputTerm]);
 
   useEffect(() => {
     async function loadData() {

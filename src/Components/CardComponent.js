@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import RatingBarComponent from '../shared_components/RatingBarComponent.js';
-import ImageComponent from '../shared_components/ImageComponent.js';
+import RatingBarComponent from './shared/RatingBarComponent.js';
+import ImageComponent from './shared/ImageComponent.js';
 
 
 const Card = styled.div`
